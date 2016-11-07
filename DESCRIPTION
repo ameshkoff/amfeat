@@ -1,0 +1,18 @@
+Package: amfeat
+Type: Package
+Title: AM Feature Engineering
+Version: 0.1.0
+Authors@R: person("Aleksandr", "Meshkov", email = "agrobov@gmail.com",
+  role = c("aut", "cre"))
+Description: Search, create, estimate new features
+Depends:
+    R (>= 3.3.0)
+License: CC-BY-SA-4.0 (Attribution-ShareAlike 4.0 International)
+LazyData: TRUE
+Imports:
+    Hmisc,
+    stringr,
+    data.table,
+    foreach,
+    doParallel
+RoxygenNote: 5.0.1
