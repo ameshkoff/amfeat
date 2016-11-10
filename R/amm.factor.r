@@ -5,6 +5,7 @@
 #' @param ds data.table: data set
 #' @return Data.table
 #' @seealso amm.factor for setting factors for selected columns
+#' @export
 
 amm.factorr <- function(ds) {
 
@@ -28,6 +29,7 @@ amm.factorr <- function(ds) {
 #' @param ds.list character vector of columns name needed to convert
 #' @return Data.table
 #' @seealso amm.convn for converting without modifying the original data set
+#' @export
 
 amm.factor <- function(ds, ds.list) {
 

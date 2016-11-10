@@ -7,6 +7,7 @@
 #' @param value: value in one of atomic types
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
+#' @export
 
 amm.gvalue <- function(ds
                        , ds.list

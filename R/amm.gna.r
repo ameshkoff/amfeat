@@ -6,6 +6,7 @@
 #' @param ds.list character vector of columns name needed to convert
 #' @return Character vector of column names
 #' @seealso amm.gnat
+#' @export
 
 amm.gna <- function(ds, ds.list) {
 
@@ -30,6 +31,7 @@ amm.gna <- function(ds, ds.list) {
 #' @param ds.list character vector of columns name needed to convert
 #' @return Character vector of column names
 #' @seealso amm.gna
+#' @export
 
 amm.gnat <- function(ds, ds.list) {
 

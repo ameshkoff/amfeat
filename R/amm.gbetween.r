@@ -9,6 +9,7 @@
 #' @param excl numeric: values to exclude. NA and NaN are also possible
 #' @return Character vector of column names
 #' @seealso amm.gbetweens
+#' @export
 
 amm.gbetween <- function(ds
                         , ds.list
@@ -43,6 +44,7 @@ amm.gbetween <- function(ds
 #' @param excl numeric: values to exclude. NA and NaN are also possible
 #' @return Character vector of column names
 #' @seealso amm.gbetween
+#' @export
 
 amm.gbetweens <- function(ds
                          , ds.list

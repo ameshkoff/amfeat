@@ -11,6 +11,7 @@
 #' @param out.file character: absolute or relative path to the files with output; due to parallel computations you do NOT see most of the info in the console; id default no outputs are used
 #' @return Data.table. rn - new feature name, cr - correlation, f1 - first original feature used, f2 - second original feature used
 #' @seealso You can use this data to choose and create new features you prefer with am.calcf function
+#' @export
 
 am.scor <- function(ds
                      , ds.cols

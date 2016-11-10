@@ -6,6 +6,7 @@
 #' @param fnct character: "is" function name: is.character, is.factor, is.numeric etc.
 #' @return Character vector of column names
 #' @seealso amm.gmatch
+#' @export
 
 amm.gtypes <- function(ds
                        , fnct) {

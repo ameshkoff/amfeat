@@ -6,6 +6,7 @@
 #' @param ds.list character vector of columns name needed to convert
 #' @return Character vector of column names
 #' @seealso amm.gonevaluena
+#' @export
 
 amm.gonevalue <- function(ds, ds.list) {
 
@@ -31,6 +32,7 @@ amm.gonevalue <- function(ds, ds.list) {
 #' @param ds.list character vector of columns name needed to convert
 #' @return Character vector of column names
 #' @seealso amm.gonevalue
+#' @export
 
 amm.gonevaluena <- function(ds, ds.list) {
 

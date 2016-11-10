@@ -6,6 +6,7 @@
 #' @param ds.list character vector of columns name needed to convert
 #' @return Data.table
 #' @seealso amm.conv for converting without modifying the original data set
+#' @export
 
 amm.convl <- function(ds, ds.list) {
   for (i in 1:length(ds.list)) {
@@ -25,6 +26,7 @@ amm.convl <- function(ds, ds.list) {
 #' @param ds.list character vector of columns name needed to convert
 #' @return Data.table
 #' @seealso amm.convl for more memory efficient converting
+#' @export
 
 amm.conv <- function(ds, ds.list) {
 

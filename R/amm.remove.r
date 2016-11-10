@@ -6,6 +6,7 @@
 #' @param ds.list character vector of columns name needed to convert
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
+#' @export
 
 amm.remove <- function(ds
                        , ds.list) {

@@ -7,6 +7,7 @@
 #' @param verbose logical
 #' @return Data.table. rn - new feature name, cr - correlation, f1 - first original feature used, f2 - second original feature used
 #' @seealso am.scor, am.scorfl
+#' @export
 
 am.calcf <- function(ds, ds.list, verbose = FALSE) {
 

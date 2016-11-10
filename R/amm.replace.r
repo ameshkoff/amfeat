@@ -8,6 +8,7 @@
 #' @param ds.replace: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
+#' @export
 
 amm.replace <- function(ds
                         , ds.list
@@ -41,6 +42,7 @@ amm.replace <- function(ds
 #' @param ds.replace: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
+#' @export
 
 amm.replacem <- function(ds
                         , ds.list
@@ -74,6 +76,7 @@ amm.replacem <- function(ds
 #' @param ds.replace: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
+#' @export
 
 amm.replacemp <- function(ds
                          , ds.list

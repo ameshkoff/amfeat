@@ -8,6 +8,7 @@
 #' @param ds.replace: replacing character
 #' @return List of modified data set and modified ... argument
 #' @seealso ...
+#' @export
 
 amm.torange <- function(ds
                         , target.col

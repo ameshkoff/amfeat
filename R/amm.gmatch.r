@@ -7,6 +7,7 @@
 #' @param ptrn character: pattern to find
 #' @return Character vector of column names
 #' @seealso amm.gtmatcht
+#' @export
 
 amm.gmatch <- function(ds
                       , ds.list
@@ -35,6 +36,7 @@ amm.gmatch <- function(ds
 #' @param excl character: values to exclude
 #' @return Character vector of column names
 #' @seealso amm.gmatch
+#' @export
 
 amm.gmatcht <- function(ds
                        , ds.list
