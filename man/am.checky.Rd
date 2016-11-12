@@ -10,6 +10,8 @@ am.checky(ds, ds.list, ds.y, corr.type = "spearman", cl.number = 1,
 \arguments{
 \item{ds}{data.table: data set}
 
+\item{ds.list}{character vector: nams of independent variables (X)}
+
 \item{ds.y}{character: name of the dependent variable (Y)}
 
 \item{corr.type}{character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details}
