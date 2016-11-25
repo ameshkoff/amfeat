@@ -71,7 +71,7 @@ am.calcf <- function(ds
       ds[,eval(as.name(var.name)) := log(as.double(eval(as.name(var.1))) + abs(min(as.double(eval(as.name(var.1))))) + 1)]
     }
     if (oper == "let") {
-      ds[,eval(as.name(var.name)) := eval(as.name(var.1)) * 27 ^ (ceiling(log(eval(as.name(var.2)), 27)) + 1) + eval(as.name(var.2))]
+      ds[,eval(as.name(var.name)) := eval(as.name(var.1)) * 27 ^ (ceiling(log(eval(as.name(var.2)) + .00000001, 27)) + 1) + eval(as.name(var.2))]
     }
   }
 

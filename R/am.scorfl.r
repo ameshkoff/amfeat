@@ -561,7 +561,7 @@ am.scorfl <- function(ds
 
           tmp <- data.table(rn = "let"
                             , cr = rcorr(x = ds[, eval(as.name(ds.list[i])) * 27 ^
-                                                  (ceiling(log(eval(as.name(ds.list[j])), 27)) + 1) +
+                                                  (ceiling(log(eval(as.name(ds.list[j])) + .00000001, 27)) + 1) +
                                                   eval(as.name(ds.list[j]))],
                                          y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
                             , f1 = ds.list[i]
