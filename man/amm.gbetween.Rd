@@ -4,7 +4,7 @@
 \alias{amm.gbetween}
 \title{Get numeric columns between min and max}
 \usage{
-amm.gbetween(ds, ds.list, excl = "", min.v = 0, max.v = 1, ptrn)
+amm.gbetween(ds, ds.list, excl = "", min.v = 0, max.v = 1, ptrn = "")
 }
 \arguments{
 \item{ds}{data.table: data set}
@@ -16,6 +16,8 @@ amm.gbetween(ds, ds.list, excl = "", min.v = 0, max.v = 1, ptrn)
 \item{min.v}{numeric: min value}
 
 \item{max.v}{numeric: max.value}
+
+\item{ptrn}{character: pattern to narrow list of column names to apply function}
 }
 \value{
 Character vector of column names

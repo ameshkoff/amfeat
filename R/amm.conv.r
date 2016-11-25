@@ -6,6 +6,7 @@
 #' @param ds.list character vector of columns name needed to convert
 #' @return Data.table
 #' @seealso amm.conv for converting without modifying the original data set
+#' @importFrom utils type.convert
 #' @export
 
 amm.convl <- function(ds, ds.list) {

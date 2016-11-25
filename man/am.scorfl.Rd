@@ -4,20 +4,22 @@
 \alias{am.scorfl}
 \title{Flexible search for new correlations}
 \usage{
-am.scorfl(ds, ds.cols, ds.y, corr.type = "spearman", treshold.v = 1.1,
-  treshold.a = 0.05, oper = c("sum", "mult", "subt", "dist", "mean", "min",
-  "max", "xor", "log"), cl.number = 1, out.file = "")
+am.scorfl(ds, ds.list, ds.y, corr.type = "spearman", threshold.v = 1.1,
+  threshold.a = 0.05, oper = c("sum", "mult", "subt", "dist", "mean", "min",
+  "max", "xor", "log", "let"), cl.number = 1, out.file = "")
 }
 \arguments{
 \item{ds}{data.table: data set}
+
+\item{ds.list}{character vector: names of independent variables (X)}
 
 \item{ds.y}{character: name of the dependent variable (Y)}
 
 \item{corr.type}{character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details}
 
-\item{treshold.v}{number: how much correlation from the new feature to Y should be more than the lesser from the original ones; default is 1.1 = 10 per cent more}
+\item{threshold.v}{number: how much correlation from the new feature to Y should be more than the lesser from the original ones; default is 1.1 = 10 per cent more}
 
-\item{treshold.a}{number: the minimal correlation from the new feature to Y; .05 default}
+\item{threshold.a}{number: the minimal correlation from the new feature to Y; .05 default}
 
 \item{oper}{character vector: one or more operations you want to apply with the feature pairs}
 
@@ -30,6 +32,12 @@ Data.table. rn - new feature name, cr - correlation, f1 - first original feature
 }
 \description{
 Search for new correlations based ot original feature pairs: choose new feature types you want to apply. Be careful! Parallel computation in use.
+}
+\details{
+Details info
+\itemize{
+ \item{"oper"}{You can use following operations: "sum", "mult", "subt", "dist", "mean", "min", "max", "xor", "log", "let". Most of them are self describing. "Let" supposed you use encoded letter ranges beginning with A as 1 * 27 ^ -1, B as 2 * 27 ^ -1, AA as 1 * 27 ^ 0 and so forth.}
+}
 }
 \seealso{
 You can use this data to choose and create new features you prefer with am.calcf function

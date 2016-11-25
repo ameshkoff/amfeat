@@ -4,7 +4,7 @@
 #'
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
-#' @param value: value in one of atomic types
+#' @param value any: value in one of atomic types
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
 #' @export

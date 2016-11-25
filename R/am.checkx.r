@@ -3,6 +3,7 @@
 #' Define pairwise correlations between independent variables. Use sns argument to define what correlation you want to test. Be careful! Parallel computation in use.
 #'
 #' @param ds data.table: data set
+#' @param ds.list character vector: names of independent variables (X)
 #' @param corr.type character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details
 #' @param cl.number number: cluster number for parallel computers; be very careful with this parameter! do not set it too big
 #' @param sns number: Sensitivity. How strong should be probable intersectons between two features to test autocorrelations

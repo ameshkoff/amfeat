@@ -3,6 +3,7 @@
 #' Search for new correlations based ot original feature pairs: all types in one step. Be careful! Parallel computation in use.
 #'
 #' @param ds data.table: data set
+#' @param ds.list character vector: names of independent variables (X)
 #' @param ds.y character: name of the dependent variable (Y)
 #' @param corr.type character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details
 #' @param treshold.v number: how much correlation from the new feature to Y should be more than the lesser from the original ones; default is 1.1 = 10 per cent more
@@ -14,7 +15,7 @@
 #' @export
 
 am.scor <- function(ds
-                     , ds.cols
+                     , ds.list
                      , ds.y
                      , corr.type = "spearman"
                      , treshold.v = 1.1
@@ -31,13 +32,13 @@ am.scor <- function(ds
 
   registerDoParallel(cl)
 
-  print(paste("start calculating correlations to Y :", length(ds.cols), "steps", sep=" "))
+  print(paste("start calculating correlations to Y :", length(ds.list), "steps", sep=" "))
 
-  rtrn <- foreach (i=1:length(ds.cols), .packages=c("Hmisc","data.table"), .verbose=FALSE, .combine=rbind) %dopar% {
-    tmp <- list(ds.cols[i], rcorr(x = ds[,eval(as.name(ds.cols[i]))], y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2])
+  rtrn <- foreach (i=1:length(ds.list), .packages=c("Hmisc","data.table"), .verbose=FALSE, .combine=rbind) %dopar% {
+    tmp <- list(ds.list[i], rcorr(x = ds[,eval(as.name(ds.list[i]))], y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2])
   }
 
-  print(paste("end calculating correlations to Y :", length(ds.cols), "steps", sep=" "))
+  print(paste("end calculating correlations to Y :", length(ds.list), "steps", sep=" "))
   rtrn <- data.table(rtrn)
   rtrn[, V2:=as.numeric(V2)]
 
@@ -49,54 +50,54 @@ am.scor <- function(ds
 
   gc()
 
-  print(paste("start searching new features :", length(ds.cols), "original features; start time : ", Sys.time(), sep=" "))
+  print(paste("start searching new features :", length(ds.list), "original features; start time : ", Sys.time(), sep=" "))
 
-  rtrn1 <- foreach (i=1:length(ds.cols), .packages=c("Hmisc","data.table"), .verbose=TRUE, .combine=rbind) %dopar% {
+  rtrn1 <- foreach (i=1:length(ds.list), .packages=c("Hmisc","data.table"), .verbose=TRUE, .combine=rbind) %dopar% {
 
     tmp.r <- data.table(rn = character(), cr = double(), f1 = character(), f2 = character())
 
-    print(paste("column :", i, ds.cols[i], as.character(Sys.time())))
+    print(paste("column :", i, ds.list[i], as.character(Sys.time())))
 
-    for (j in (i+1):length(ds.cols)) {
+    for (j in (i+1):length(ds.list)) {
 
-      if (i < length(ds.cols)) {
+      if (i < length(ds.list)) {
 
         tmp<-data.table(rn = "sum"
-                        , cr = rcorr(x = ds[,eval(as.name(ds.cols[i])) + eval(as.name(ds.cols[j]))],
+                        , cr = rcorr(x = ds[,eval(as.name(ds.list[i])) + eval(as.name(ds.list[j]))],
                                      y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                        , f1 = ds.cols[i]
-                        , f2 = ds.cols[j])
+                        , f1 = ds.list[i]
+                        , f2 = ds.list[j])
         tmp<-rbind(tmp, list(rn = "mult"
-                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.cols[i]))) * as.double(eval(as.name(ds.cols[j])))]
+                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.list[i]))) * as.double(eval(as.name(ds.list[j])))]
                                           , y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                             , f1 = ds.cols[i]
-                             , f2 = ds.cols[j]))
+                             , f1 = ds.list[i]
+                             , f2 = ds.list[j]))
         tmp<-rbind(tmp, list(rn = "subt"
-                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.cols[i]))) - as.double(eval(as.name(ds.cols[j])))],
+                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.list[i]))) - as.double(eval(as.name(ds.list[j])))],
                                           y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                             , f1 = ds.cols[i]
-                             , f2 = ds.cols[j]))
+                             , f1 = ds.list[i]
+                             , f2 = ds.list[j]))
         tmp<-rbind(tmp, list(rn = "subt"
-                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.cols[j]))) - as.double(eval(as.name(ds.cols[i])))],
+                             , cr = rcorr(x = ds[,as.double(eval(as.name(ds.list[j]))) - as.double(eval(as.name(ds.list[i])))],
                                           y = ds[,eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                             , f1 = ds.cols[j]
-                             , f2 = ds.cols[i]))
+                             , f1 = ds.list[j]
+                             , f2 = ds.list[i]))
         tmp<-rbind(tmp, list(rn = "dist"
-                             , cr = rcorr(x = ds[, (as.double(eval(as.name(ds.cols[j]))) ^ 2 + as.double(eval(as.name(ds.cols[i]))) ^ 2) ^ .5],
+                             , cr = rcorr(x = ds[, (as.double(eval(as.name(ds.list[j]))) ^ 2 + as.double(eval(as.name(ds.list[i]))) ^ 2) ^ .5],
                                           y = ds[, eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                             , f1 = ds.cols[j]
-                             , f2 = ds.cols[i]))
+                             , f1 = ds.list[j]
+                             , f2 = ds.list[i]))
         tmp<-rbind(tmp, list(rn = "xor"
-                             , cr = rcorr(x = as.numeric(ds[, xor(as.numeric(eval(as.name(ds.cols[i]))), as.numeric(eval(as.name(ds.cols[j]))))]),
+                             , cr = rcorr(x = as.numeric(ds[, xor(as.numeric(eval(as.name(ds.list[i]))), as.numeric(eval(as.name(ds.list[j]))))]),
                                           y = ds[, eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                             , f1 = ds.cols[i]
-                             , f2 = ds.cols[j]))
+                             , f1 = ds.list[i]
+                             , f2 = ds.list[j]))
 
         if (j == i+1) {
           tmp<-rbind(tmp, list(rn = "log"
-                               , cr = rcorr(x = ds[, log(as.double(eval(as.name(ds.cols[i]))) + abs(min(as.double(eval(as.name(ds.cols[i]))))) + 1)],
+                               , cr = rcorr(x = ds[, log(as.double(eval(as.name(ds.list[i]))) + abs(min(as.double(eval(as.name(ds.list[i]))))) + 1)],
                                             y = ds[, eval(as.name(ds.y))], type=eval(corr.type))$r[1,2]
-                               , f1 = ds.cols[i]
+                               , f1 = ds.list[i]
                                , f2 = NA))
         }
 
@@ -110,8 +111,8 @@ am.scor <- function(ds
 
 
           # check if the new correlations are important and are clearly more important than original ones
-          tmp <- tmp[(cr / rtrn[rn == ds.cols[i], cr]) > eval(treshold.v)
-                     & ((cr / rtrn[rn == ds.cols[j], cr]) > eval(treshold.v) | is.na(f2))
+          tmp <- tmp[(cr / rtrn[rn == ds.list[i], cr]) > eval(treshold.v)
+                     & ((cr / rtrn[rn == ds.list[j], cr]) > eval(treshold.v) | is.na(f2))
                      & cr > eval(treshold.a)
                      & !is.na(cr)]
 
@@ -124,7 +125,7 @@ am.scor <- function(ds
     }
     tmp.r
   }
-  print(paste("end searching new features :", length(ds.cols), "original features; end time : ", Sys.time(), sep=" "))
+  print(paste("end searching new features :", length(ds.list), "original features; end time : ", Sys.time(), sep=" "))
 
   rtrn1 <- data.table(rtrn1)
 

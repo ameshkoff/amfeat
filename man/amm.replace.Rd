@@ -13,7 +13,7 @@ amm.replace(ds, ds.list, ds.string, ds.replace)
 
 \item{ds.string}{character vector: value to replace}
 
-\item{ds.replace:}{replacing character}
+\item{ds.replace}{character: replacing character}
 }
 \value{
 Character vector of column names

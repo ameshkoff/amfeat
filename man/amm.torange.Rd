@@ -9,17 +9,17 @@ amm.torange(ds, target.col, ds.list, ...)
 \arguments{
 \item{ds}{data.table: data set}
 
+\item{target.col}{character: Y variable for getting right order. If numeric, you can round it to some reasonable value}
+
 \item{ds.list}{character vector of columns name needed to convert}
 
 \item{...}{some other arguments: what ones??}
-
-\item{ds.replace:}{replacing character}
 }
 \value{
 List of modified data set and modified ... argument
 }
 \description{
-Convert categorical features to range ones. Warning! May contain some not self evident prerequisits.
+Convert categorical features to range ones.
 }
 \seealso{
 ...

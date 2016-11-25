@@ -5,7 +5,7 @@
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
 #' @param ds.string character vector: value to replace
-#' @param ds.replace: replacing character
+#' @param ds.replace character: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
 #' @export
@@ -39,7 +39,7 @@ amm.replace <- function(ds
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
 #' @param ds.string character: value to replace
-#' @param ds.replace: replacing character
+#' @param ds.replace character: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
 #' @export
@@ -73,7 +73,7 @@ amm.replacem <- function(ds
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
 #' @param ds.string character: value to replace
-#' @param ds.replace: replacing character
+#' @param ds.replace character: replacing character
 #' @return Character vector of column names
 #' @seealso amm.match, amm.gbetween
 #' @export

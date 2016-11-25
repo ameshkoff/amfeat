@@ -4,9 +4,10 @@
 #'
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
+#' @param excl numeric: values to exclude. NA and NaN are also possible
 #' @param min.v numeric: min value
 #' @param max.v numeric: max.value
-#' @param excl numeric: values to exclude. NA and NaN are also possible
+#' @param ptrn character: pattern to narrow list of column names to apply function
 #' @return Character vector of column names
 #' @seealso amm.gbetweens
 #' @export
@@ -16,7 +17,7 @@ amm.gbetween <- function(ds
                         , excl = ""
                         , min.v = 0
                         , max.v = 1
-                        , ptrn) {
+                        , ptrn = "") {
 
   rtrn <- character(0)
 
@@ -39,9 +40,10 @@ amm.gbetween <- function(ds
 #'
 #' @param ds data.table: data set
 #' @param ds.list character vector of columns name needed to convert
+#' @param excl numeric: values to exclude. NA and NaN are also possible
 #' @param min.v numeric: min value
 #' @param max.v numeric: max.value
-#' @param excl numeric: values to exclude. NA and NaN are also possible
+#' @param ptrn character: pattern to narrow list of column names to apply function
 #' @return Character vector of column names
 #' @seealso amm.gbetween
 #' @export

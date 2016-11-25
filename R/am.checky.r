@@ -3,7 +3,7 @@
 #' Define pairwise correlations between the dependant variable (Y) and every independent variable (Xs). Be careful! Parallel computation in use.
 #'
 #' @param ds data.table: data set
-#' @param ds.list character vector: nams of independent variables (X)
+#' @param ds.list character vector: names of independent variables (X)
 #' @param ds.y character: name of the dependent variable (Y)
 #' @param corr.type character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details
 #' @param cl.number number: cluster number for parallel computers; be very careful with this parameter! do not set it too big
@@ -11,6 +11,10 @@
 #' @return Data.table. rn - feature name, cr - correlation value
 #' @seealso You can use this data to choose and create new features you prefer with am.calcf function
 #' @import data.table
+#' @import foreach
+#' @import doParallel
+#' @import stringr
+#' @import Hmisc
 #' @export
 
 am.checky <- function(ds

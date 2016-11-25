@@ -4,11 +4,13 @@
 \alias{am.scor}
 \title{Search for new correlations}
 \usage{
-am.scor(ds, ds.cols, ds.y, corr.type = "spearman", treshold.v = 1.1,
+am.scor(ds, ds.list, ds.y, corr.type = "spearman", treshold.v = 1.1,
   treshold.a = 0.05, cl.number = 1, out.file = "")
 }
 \arguments{
 \item{ds}{data.table: data set}
+
+\item{ds.list}{character vector: names of independent variables (X)}
 
 \item{ds.y}{character: name of the dependent variable (Y)}
 

@@ -10,7 +10,7 @@ am.checky(ds, ds.list, ds.y, corr.type = "spearman", cl.number = 1,
 \arguments{
 \item{ds}{data.table: data set}
 
-\item{ds.list}{character vector: nams of independent variables (X)}
+\item{ds.list}{character vector: names of independent variables (X)}
 
 \item{ds.y}{character: name of the dependent variable (Y)}
 

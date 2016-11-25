@@ -1,11 +1,11 @@
 #' Categorical features to range ones
 #'
-#' Convert categorical features to range ones. Warning! May contain some not self evident prerequisits.
+#' Convert categorical features to range ones.
 #'
 #' @param ds data.table: data set
+#' @param target.col character: Y variable for getting right order. If numeric, you can round it to some reasonable value
 #' @param ds.list character vector of columns name needed to convert
 #' @param ... some other arguments: what ones??
-#' @param ds.replace: replacing character
 #' @return List of modified data set and modified ... argument
 #' @seealso ...
 #' @export

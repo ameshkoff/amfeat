@@ -11,7 +11,7 @@ amm.gvalue(ds, ds.list, value)
 
 \item{ds.list}{character vector of columns name needed to convert}
 
-\item{value:}{value in one of atomic types}
+\item{value}{any: value in one of atomic types}
 }
 \value{
 Character vector of column names

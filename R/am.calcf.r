@@ -9,7 +9,9 @@
 #' @seealso am.scor, am.scorfl
 #' @export
 
-am.calcf <- function(ds, ds.list, verbose = FALSE) {
+am.calcf <- function(ds
+                     , ds.list
+                     , verbose = FALSE) {
 
   if (!is.data.frame(ds.list)) {
     ds.list <- data.table(orig <- ds.list)
@@ -21,7 +23,7 @@ am.calcf <- function(ds, ds.list, verbose = FALSE) {
     ds.list <- data.table(ds.list)
   }
 
-  if (verbose == TRUE) {
+  if (verbose) {
     print(paste("columns to create :", nrow(ds.list), ":", Sys.time()))
   }
 
@@ -68,9 +70,12 @@ am.calcf <- function(ds, ds.list, verbose = FALSE) {
     if (oper == "log") {
       ds[,eval(as.name(var.name)) := log(as.double(eval(as.name(var.1))) + abs(min(as.double(eval(as.name(var.1))))) + 1)]
     }
+    if (oper == "let") {
+      ds[,eval(as.name(var.name)) := eval(as.name(var.1)) * 27 ^ (ceiling(log(eval(as.name(var.2)), 27)) + 1) + eval(as.name(var.2))]
+    }
   }
 
-  if (verbose == TRUE) {
+  if (verbose) {
     print(paste("columns created :", nrow(ds.list), ":", Sys.time()))
   }
 

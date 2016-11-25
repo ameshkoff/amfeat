@@ -10,6 +10,8 @@ am.checkx(ds, ds.list, corr.type = "spearman", cl.number = 1, sns = 0.5,
 \arguments{
 \item{ds}{data.table: data set}
 
+\item{ds.list}{character vector: names of independent variables (X)}
+
 \item{corr.type}{character: correlation types; "spearman" (default) and "pearson" available; see Hmisc rcorr for details}
 
 \item{cl.number}{number: cluster number for parallel computers; be very careful with this parameter! do not set it too big}
